@@ -94,8 +94,21 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "app:build:production",
+            "firebaseProject": "gestion-panne-env",
+            "firebaseHostingSite": "gestion-panne-env"
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "3ace746c-4124-4bb8-bbb5-0cceab090eb4"
   }
 }
