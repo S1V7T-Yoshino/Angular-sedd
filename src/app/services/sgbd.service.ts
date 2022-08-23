@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import firebase from 'firebase/compat/app';
+import * as fire from 'firebase/compat/app';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +17,16 @@ export class SgbdService {
   constructor( private auth : AngularFireAuth, private route : Router ) {
     this.user = this.auth.authState;
   }
+
+  getuser() {
+    return fire.default.auth().currentUser?.uid;
+  }
   
   Login(email : string , password : string) {
     this.auth.signInWithEmailAndPassword(email, password).then(
       (data) => {
         console.log(data.user?.uid + ' ' + data.user?.email);
-        localStorage.setItem('user', JSON.stringify( data.user?.uid));
+        // localStorage.setItem('user', JSON.stringify( data.user?.uid));
         localStorage.setItem('token', 'true');
         this.route.navigate(['/']);
       }

@@ -15,7 +15,16 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-md-6"><label class="labels">Name</label>
-                        <input type="text" class="form-control" placeholder="first name" value="" [(ngModel)] = "Person.Prenom"></div>
+                        
+                        <!-- this is how to ngif show an input and controle it
+                        <div *ngIf="Person.Role=='employe' ; else elseBlock">
+                            <input type="text" class="form-control" [readonly]=true [placeholder]="nname" [(ngModel)] = "Person.Prenom">
+                        </div>
+                        <ng-template #elseBlock>
+                            <input type="text" class="form-control" [readonly]=false [placeholder]="nname" [(ngModel)] = "Person.Prenom">
+                        </ng-template>  -->
+                         
+                        <input type="text" class="form-control" [placeholder]="'Name'" [(ngModel)] = "Person.Prenom"></div>
                     <div class="col-md-6"><label class="labels">Surname</label>
                         <input type="text" class="form-control" value="" placeholder="surname" [(ngModel)] = "Person.Nom"></div>
                 </div>
@@ -34,7 +43,7 @@
                         <input type="text" class="form-control" value="" placeholder="N° Bureau" [(ngModel)] = "Num_bureau"></div>
                 </div>
                 <div class="mt-5 text-center">
-                    <button class="btn btn-primary profile-button" type="button" (click)="saveprofile()">Save Profile</button></div>
+                    <button class="btn btn-primary profile-button" type="button" (click)="show()">Save Profile</button></div>
             </div>
         </div>
         <!-- <div class="col-md-4">

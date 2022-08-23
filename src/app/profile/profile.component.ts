@@ -1,7 +1,9 @@
+import { SgbdService } from './../services/sgbd.service';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',
@@ -19,21 +21,45 @@ export class ProfileComponent implements OnInit {
     uid : '',
   }
   Num_bureau = '';
+  Name = 'aymen';
 
-
-  constructor( private router: ActivatedRoute, private save : AngularFirestore) {
-    this.router.params.subscribe( params => {
-      // this.Person.uid = params.this.Person.uid;
-    } );
+  user : any
+  constructor( private router: ActivatedRoute, private save : AngularFirestore, private sgbd : SgbdService) {
+    this.user = sgbd.getuser();
   }
 
+  // data : any
+// 
+
+// 
   ngOnInit(): void {
+    this.save.collection("users").snapshotChanges().pipe(
+      map(data => data.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        console.log(id, data);
+        console.log("111");
+        return { id, data };
+      }))
+    )
+    
   }
   
-  uid : any = localStorage.getItem('user');
-  user : string = this.uid;
+  show(){
+    this.save.collection("users").snapshotChanges().pipe(
+      map(data => data.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        console.log(id, data);
+        console.log("111");
+        return { id, data };
+      }))
+    )
+  }
+  // uid : any = localStorage.getItem('user');
+  // user : string = this.uid;
   
-  id = localStorage.getItem('user');
+  // id = localStorage.getItem('user');
   saveprofile(){
     this.save.collection("users").doc(this.user).set(
     {
@@ -42,11 +68,13 @@ export class ProfileComponent implements OnInit {
       CIN: this.Person.CIN,
       Tel: this.Person.Tel,
       Adresse: this.Person.Adresse,
-      uid: this.user,// JSON.parse(localStorage.getItem('customtoken'))
+      uid: this.user,              // JSON.parse(localStorage.getItem('customtoken'))
       Num_bureau: this.Num_bureau}
-    ).then(() => {
-      alert('successfull');
-    })
+    ).then(
+      // () => {
+      //   alert('successfull');
+      // }
+    )
     .catch(error => {
       alert(error);
     });
