@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
   titre;
   constructor( private db: SgbdService) {
     //  console.log("name : " + this.db.getnom());
-    this.titre = "Bienvenue sur le site de " + this.db.getnom();
+    this.titre = "Bienvenue sur le site de Yoshino"
   }
   
   ngOnInit(): void {

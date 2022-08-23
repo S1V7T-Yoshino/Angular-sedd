@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SgbdService } from '../services/sgbd.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-signin',
@@ -9,16 +10,17 @@ import { SgbdService } from '../services/sgbd.service';
 export class SigninComponent implements OnInit {
   email : string = '';
   password : string = '';
+  
   constructor( private auth: SgbdService) { }
 
   ngOnInit(): void {
   }
+
   login() {
     if(this.email == '' && this.password == '') {
      alert('please enter your informations');
      return
     }
-  
     this.auth.Login(this.email, this.password);
     this.email = '';
     this.password = '';

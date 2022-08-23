@@ -1,5 +1,7 @@
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-profile',
@@ -8,17 +10,49 @@ import { ActivatedRoute } from '@angular/router';
 })
   
 export class ProfileComponent implements OnInit {
-  name:any;
-  id : any;
-  constructor( private router: ActivatedRoute) {
+  Person = {
+    Nom : '',
+    Prenom : '',
+    CIN : '',
+    Tel : '',
+    Adresse : '',
+    uid : '',
+  }
+  Num_bureau = '';
+
+
+  constructor( private router: ActivatedRoute, private save : AngularFirestore) {
     this.router.params.subscribe( params => {
-      this.id = params['id'];
-      this.name = params['name'];
-      console.log("Name : " + params['name'] + " id : " + params['id']);
+      // this.Person.uid = params.this.Person.uid;
     } );
-   }
+  }
 
   ngOnInit(): void {
   }
+  
+  uid : any = localStorage.getItem('user');
+  user : string = this.uid;
+  
+  id = localStorage.getItem('user');
+  saveprofile(){
+    this.save.collection("users").doc(this.user).set(
+    {
+      name : this.Person.Nom,
+      Prenom: this.Person.Prenom,
+      CIN: this.Person.CIN,
+      Tel: this.Person.Tel,
+      Adresse: this.Person.Adresse,
+      uid: this.user,// JSON.parse(localStorage.getItem('customtoken'))
+      Num_bureau: this.Num_bureau}
+    ).then(() => {
+      alert('successfull');
+    })
+    .catch(error => {
+      alert(error);
+    });
+      
+    console.log(this.Person);
+  }
+
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SgbdService } from '../services/sgbd.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
+  isUser : any
+  constructor( private auth : SgbdService) {
+    this.isUser = auth.user.subscribe(log =>{
+      this.isUser = log;
+    })
+   }
 
   ngOnInit(): void {
+  }
+  token = localStorage.getItem('token');
+  signout() {
+    this.auth.signout();
+    this.token = '';
   }
 
 }

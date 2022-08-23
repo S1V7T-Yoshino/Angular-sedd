@@ -1,15 +1,16 @@
-<div class="row">
-    <div class="col-md-6 offset-md-3 mt-4">
+<div class="container">
+    <div class="col-md-3 offset-md-3 mt-2" style = "position : center">
     <h3>Login</h3>
-    <label for="EmailInput" class="form-label">Email</label>
+    <label for="EmailInput" class="form-label">Email:</label>
     <input type="email" class="form-control" id="EmailInput" placeholder="Enter email" [(ngModel)]="email">
   
-    <label for="PwdInput" class="form-label">Password</label>
+    <label for="PwdInput" class="form-label">Password:</label>
     <input type="password" class="form-control" id="PwdInput" placeholder="Enter Password" [(ngModel)]="password">
-    <div class="form-group form-check">
+    <!-- <div class="form-group form-check">
         <a>Forgot Password</a>
-        <!-- [routerLink]="['/reset-password']" -->
-    </div>
+        [routerLink]="['/reset-password']"
+    </div> -->
+    <br>
     <button type="button" class="btn btn-primary" (click)="login()">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></button>
     </div>
 </div>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "gestion-panne-env": {
+      "hosting": {
+        "app": [
+          "gestion-panne-env"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "gestion-panne-env"
+  }
+}

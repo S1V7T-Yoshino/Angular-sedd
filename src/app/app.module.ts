@@ -8,13 +8,16 @@ import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './signin/signin.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PageComponent } from './page/page.component';
-// import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-// import { provideAuth,getAuth } from '@angular/fire/auth';
-// import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { AngularFireModule } from '@angular/fire/compat';
 import { SignupComponent } from './signup/signup.component'; 
 import { FormsModule } from '@angular/forms';
+
+import { AngularFireModule } from '@angular/fire/compat';
+// import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+// import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+// import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+// import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from '../environments/environment';
+import { ReclamationComponent } from './reclamation/reclamation.component';
 
 @NgModule({
   declarations: [
@@ -24,16 +27,18 @@ import { FormsModule } from '@angular/forms';
     SigninComponent,
     ProfileComponent,
     PageComponent,
-    SignupComponent
+    SignupComponent,
+    ReclamationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     FormsModule,
-    // provideFirebaseApp(() => initializeApp(environment.firebase)),
-    // provideAuth(() => getAuth()),
-    // provideFirestore(() => getFirestore())
+    // AngularFireAuthModule,
+    // AngularFirestoreModule,
+    // AngularFireStorageModule,
+    // AngularFireDatabaseModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

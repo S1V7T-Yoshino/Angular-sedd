@@ -5,13 +5,15 @@ import { ProfileComponent } from './profile/profile.component';
 import { SigninComponent } from './signin/signin.component';
 import { PageComponent } from './page/page.component';
 import { SignupComponent } from './signup/signup.component';
+import { ReclamationComponent } from './reclamation/reclamation.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
   {path:'signin', component:SigninComponent},
-  {path:'profile/:id/:name', component:ProfileComponent},
+  {path:'profile', component:ProfileComponent},// /:id/:name
   {path:'page', component:PageComponent},
   {path:'signup', component:SignupComponent},
+  {path: 'reclamation', component: ReclamationComponent},
   // {path:'contact', redirectTo:''},
   {path:'**', redirectTo:''}
 ];
