@@ -4,7 +4,7 @@ export interface Person {
     CIN : string,
     Tel : string,
     Adresse : string,
-    uid : string,
+    Role : string,
     Num_bureau : string,
     // salaire : string,
     image : string,

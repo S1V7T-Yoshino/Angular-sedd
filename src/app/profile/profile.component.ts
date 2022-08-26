@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
     CIN : '',
     Tel : '',
     Adresse : '',
-    uid : '',
+    Role : '',
     Num_bureau : '',
     image : '',
   }
