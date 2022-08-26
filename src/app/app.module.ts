@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -16,6 +18,7 @@ import { environment } from '../environments/environment';
 
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
     ProfileComponent,
     PageComponent,
     SignupComponent,
-    ReclamationComponent
+    ReclamationComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,8 +38,11 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
     FormsModule,
     provideFirebaseApp(() => initializeApp( environment.firebase )),
     provideFirestore(() => getFirestore() ),
+    NgbModule,
   ],
-  providers: [],
+  providers: [
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
