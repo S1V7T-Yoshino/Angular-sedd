@@ -48,7 +48,7 @@ export class SgbdService {
     const DocumentReference = doc(this.firestore, `users/${id}`);
     return docData(DocumentReference, { idField: 'id' });
   }
-  getBooks(): Observable<Person[]> {
+  getUser(): Observable<Person[]> {
     const datas = collection(this.firestore, 'users');
     return collectionData(datas, { idField: 'id' }) as Observable<Person[]>;
   }

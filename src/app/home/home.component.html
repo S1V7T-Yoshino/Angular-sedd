@@ -1,2 +1,36 @@
-<p>home works!</p>
-<p>{{titre}}</p>
+<!-- <p>home works!</p>
+<p>{{titre}}</p> -->
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Prenom</th>
+        <th scope="col">Nom</th>
+        <th scope="col">CIN</th>
+        <th scope="col">Tel</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Num_bureau</th>
+
+    </tr>
+    </thead>
+    <tbody *ngIf="Persons">
+      <tr *ngFor="let Person of Persons; index as i">
+        <th scope="row">{{ i+1 }}</th>
+        <td>{{ Person.Prenom }}</td>
+        <td>{{ Person.Nom }}</td>
+        <td>{{ Person.CIN }}</td>
+        <td>{{ Person.Tel }}</td>
+        <td>{{ Person.Adresse }}</td>
+        <td>{{ Person.Num_bureau }}</td>
+        <td>
+          <i class="bi bi-pencil-square" style="color: green;"></i>
+          <!-- //(click)="editModal(book)" -->
+        </td>
+        <td>
+          <i class="bi bi-trash" style="color: red;"></i>
+          <!-- (click)="deleteBook(book)" -->
+        </td>
+      </tr>
+     </tbody>
+  </table>

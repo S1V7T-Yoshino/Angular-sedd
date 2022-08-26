@@ -1,5 +1,6 @@
 import { SgbdService } from './../services/sgbd.service';
 import { Component, OnInit } from '@angular/core';
+import { Person } from '../interface.modal';
 
 @Component({
   selector: 'app-home',
@@ -7,13 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  titre;
+  
+  Persons : Person[] = [];
+
   constructor( private db: SgbdService) {
-    //  console.log("name : " + this.db.getnom());
-    this.titre = "Bienvenue sur le site de Yoshino"
+    
+
+
   }
   
   ngOnInit(): void {
+    this.db.getUser().subscribe((res: Person[]) => {
+      this.Persons = res;
+      console.log(this.Persons);
+    })
   }
 
 }
